@@ -121,7 +121,28 @@ export const constantRoutes = [
         meta: { title: 'Profile', icon: 'user', noCache: true }
       }
     ]
-  }
+  },
+  {
+    path: '/monacoEditor',
+    component: Layout,
+    redirect: '/monacoEditor/index',
+    alwaysShow: true, // will always show the root menu
+    name: 'monaco-editor',
+    meta: {
+      title: 'monaco-editor',
+      icon: 'lock',
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/monaco-editor'),
+        name: 'monaco-editor-index',
+        meta: {
+          title: 'monaco-editor'
+        }
+      },
+    ]
+  },
 ]
 
 /**

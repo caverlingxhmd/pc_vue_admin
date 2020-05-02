@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -46,7 +47,15 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
-    }
+    },
+    plugins: [
+      // languages: ['sql'] 只用到sql 
+      // output：'./static/js/monaco-editor' 单独将资源打包到monaco-editor目录下
+      new MonacoWebpackPlugin({
+        languages: ['sql'],
+        // output：'./static/js/monaco-editor'
+      })
+    ]
   },
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test
@@ -87,7 +96,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()
