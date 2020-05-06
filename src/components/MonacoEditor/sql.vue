@@ -38,7 +38,7 @@ export default {
   methods: {
     // monaco-editor 初始化
     initEditor() {
-      monaco.editor.defineTheme({
+      monaco.editor.defineTheme("myTheme",{
         base: "vs",
         inherit: true,
         rules: [{ background: "EDF9FA" }],
@@ -53,9 +53,8 @@ export default {
         value: this.sql, // 默认的sql语句
         theme: this.theme === "vs" ? "myTheme" : this.theme,
         language: "mysql", // 采用哪种语言
-        roundedSelection: false, // 右侧不显示编辑器预览框
         autoIndent: true, // 自动缩进
-        fontSize: 14, // 字体大小
+        fontSize: '14px', // 字体大小
         readOnly: this.readOnly, // 是否只读 不能编辑
         wordWrap: "on", // 自动换行
         minimal: {
