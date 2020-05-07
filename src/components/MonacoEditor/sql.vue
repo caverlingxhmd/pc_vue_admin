@@ -45,7 +45,13 @@ export default {
     }),
     dbTotal(){
       return this.$store.getters['sql/dbTotal']
-    }
+    },
+    table(){
+      return this.$store.getters['sql/table']()
+    },
+    column(){
+      return this.$store.getters['sql/column']()
+    },
   },
   data() {
     return {
@@ -273,7 +279,7 @@ export default {
                 if (triggerValue) {
                   _this.$store
                     .dispatch("sql/getTable", {
-                      dbname: "triggerValue.lastToken"
+                      dbname: triggerValue.lastToken
                     })
                     .then(res => {
                       let suggestions = res.map(item => {
@@ -317,6 +323,9 @@ export default {
         }
       });
     }
+  },
+  created(){
+    this.$store.dispatch('sql/getDb')
   },
   mounted() {
     this.$nextTick(() => {
