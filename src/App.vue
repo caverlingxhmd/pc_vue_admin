@@ -5,7 +5,13 @@
 </template>
 
 <script>
+import waterMark from '@/utils/water-mark'
 export default {
-  name: 'App'
+  name: 'App',
+  mounted(){
+    this.$nextTick(() => {
+      waterMark()
+    })
+  }
 }
 </script>
