@@ -126,23 +126,36 @@ export const constantRoutes = [
     path: '/monacoEditor',
     component: Layout,
     redirect: '/monacoEditor/index',
-    alwaysShow: true, // will always show the root menu
-    name: 'monaco-editor',
-    meta: {
-      title: 'monaco-editor',
-      icon: 'lock',
-    },
     children: [
       {
         path: 'index',
         component: () => import('@/views/monaco-editor'),
         name: 'monaco-editor-index',
         meta: {
-          title: 'monaco-editor'
+          title: 'monaco-editor',
+          icon: 'guide',
+          noCache: true
         }
-      },
+      }
     ]
   },
+  {
+    path: '/draggableCircle',
+    component: Layout,
+    redirect: '/draggableCircle/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/draggable-circle'),
+        name: 'draggable-circle',
+        meta: {
+          title: 'draggable-circle',
+          icon: 'guide',
+          noCache: true
+        }
+      }
+    ]
+  }
 ]
 
 /**
